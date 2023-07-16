@@ -1,9 +1,13 @@
+"""Plugin consumer interfaces for matsim."""
+
 from zope.interface import Interface, Attribute
+
 
 class IMaterial(Interface):
     """
     An object with specific physical properties
     """
+
     def yieldStress(temperature):
         """
         Returns the pressure this material can support without
@@ -16,10 +20,11 @@ class IMaterial(Interface):
         @return: Pascals
         """
 
-    dielectricConstant = Attribute("""
+    dielectricConstant = Attribute(
+        """
         @type dielectricConstant: C{complex}
         @ivar dielectricConstant: The relative permittivity, with the
         real part giving reflective surface properties and the
         imaginary part giving the radio absorption coefficient.
-        """)
-
+        """
+    )

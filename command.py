@@ -1,23 +1,29 @@
+"""Trivial example of the 'command pattern' from GoF."""
+
+
 class App(object):
     def __init__(self):
         self.actions = []
         self.notes = []
 
+
 class Note(object):
     def __init__(self, title, body):
         self.title = title
         self.body = body
-        
+
+
 class AddNote(object):
     def __init__(self, app, title, body):
         self.app = app
         self.note = Note(title, body)
-        
+
     def do(self):
         self.app.notes.append(self.note)
 
     def undo(self):
         self.app.notes.pop()
+
 
 class DelNote(object):
     def __init__(self, app, id):
@@ -29,6 +35,7 @@ class DelNote(object):
 
     def undo(self):
         self.app.notes.insert(self.id, self.note)
+
 
 class EditNote(object):
     def __init__(self, app, id, title, body):
