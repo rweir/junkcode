@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+from twisted.plugin import getPlugins
+from matsim import imatsim
+
+def displayAllKnownMaterials():
+    for material in getPlugins(imatsim.IMaterial):
+        displayMaterial(material)
+
+def displayMaterial(m):
+    print 'A material with yield stress %s at 500 K' % (m.yieldStress(500),)
+    print 'Also a dielectric constant of %s.' % (m.dielectricConstant,)
+
+displayAllKnownMaterials()
+
